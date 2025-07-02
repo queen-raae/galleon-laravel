@@ -17,8 +17,8 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
+        title: 'Galleon on Github',
+        href: 'https://github.com/queen-raae/galleon-laravel',
         icon: Folder,
     },
     {

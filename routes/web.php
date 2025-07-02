@@ -8,6 +8,10 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
+Route::get('/shipscats', function () {
+    return view('cat');
+});
+
 Route::middleware([
     'auth',
     ValidateSessionWithWorkOS::class,

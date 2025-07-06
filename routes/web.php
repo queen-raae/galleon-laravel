@@ -3,12 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
+// use arr
+use Illuminate\Support\Arr;
+// use fn?
 
+Route::get('/gateway', function () {
+    return view('gateway');
+});
 
-// This is sudo code for a database table named 'providers' with dummy data 
+Route::get('/newgateway', function () {
+    return view('newgateway');
+});
 
-Route::get('/providers', function () {
-    return view('providers', [
+// I'm building a Minimal Viable Datamodel with as few distractions as possible
+
+// This is an array instead of a database table named 'providers' with dummy data 
+
+Route::get('/gateway', function () {
+    return view('gateway', [
         'providers' => [
             [
                 'owner' => 'Luis',
@@ -33,39 +45,63 @@ Route::get('/providers', function () {
             ],
         ]
     ]);
+    
 });
 
-// This is sudo code for a database table named 'gateways' with dummy data 
+// This is an array instead of a database table named 'gateways' with dummy data 
 
-Route::get('/gateways', function () {
-    return view('gateways', [
+Route::get('/mygateways', function () {
+    return view('mygateways', [
         'gateways' => [
             [
                 'owner' => 'Luis',
                 'id' => '1',
-                'name' => 'airtable WorkOS',
-                'provider-1' => 'airtable',
-                'provider-2' => 'WorkOS',
+                'name' => 'airtable WorkOS'
+                
             ],
             [
                 'owner' => 'Ola',
                 'id' => '2',
                 'name' => 'airtable WorkOS',
-                'provider-1' => 'airtable',
-                'provider-2' => 'WorkOS',
             ],
             [
                 'owner' => 'Ola',
                 'id' => '3',
-                'name' => 'google drive WorkOS',
-                'provider-1' => 'google drive',
-                'provider-2' => 'WorkOS',
-            ],
+                'name' => 'google drive WorkOS'
+                
+            ]
         ]
     ]);
 });
 
+// For each of these gateways we'll see what is now in /gateway.blade.php 
 
+Route::get('/gateways/{id}', function ($id) {
+    $gateways = [
+        [
+            'owner' => 'Luis',
+            'id' => '1',
+            'name' => 'airtable WorkOS'
+            
+        ],
+        [
+            'owner' => 'Ola',
+            'id' => '2',
+            'name' => 'airtable WorkOS',
+        ],
+        [
+            'owner' => 'Ola',
+            'id' => '3',
+            'name' => 'google drive WorkOS'
+            
+        ]
+    ];
+
+    $gateway = Arr::first($gateways, fn($gateway) => $gateway['id'] == $id);
+    dd($gateway);
+    // 16:33
+    // return view('gateway', ['gateway' => $gateway]);
+});
 
 
 

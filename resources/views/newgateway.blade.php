@@ -1,6 +1,14 @@
-<p>New Gateway</p>
-<p>Add a name to this form, (coming soon)</p> 
-<p>get your brand new gateway</p>
-<a href="/mygateways">
-    <strong>Save</strong> 
-</a>
+<h2>New Gateway</h2>
+<p>Name your new gateway</p>
+<form>
+  <div class="form-new-gateway">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" required />
+  </div>
+  <div class="form-new-gateway">
+    <input type="submit" value="Save" />
+  </div>
+</form>
+
+
+

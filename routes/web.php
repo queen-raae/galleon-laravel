@@ -74,6 +74,24 @@ Route::get('/mygateways', function () {
     ]);
 });
 
+
+Route::get('/yourgateways', function () {
+    return view('yourgateways', [
+        'gateways' => [
+            [
+                
+                'name' => 'airtable WorkOS'
+                
+            ],
+            [
+                
+                'name' => 'google drive WorkOS'
+                
+            ]
+        ]
+    ]);
+});
+
 // For each of these gateways we'll see what is now in /gateway.blade.php 
 
 Route::get('/gateways/{id}', function ($id) {

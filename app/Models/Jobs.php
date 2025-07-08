@@ -31,3 +31,5 @@ class Job {
     }
 }
 
+
+// TODO: show $job in mygateways.blade.php and ...

@@ -78,15 +78,11 @@ Route::get('/mygateways', function () {
 Route::get('/yourgateways', function () {
     return view('yourgateways', [
         'gateways' => [
-            [
-                
-                'name' => 'airtable WorkOS'
-                
+            [ 
+                'name' => 'airtable WorkOS'   
             ],
             [
-                
-                'name' => 'google drive WorkOS'
-                
+                'name' => 'google drive WorkOS'   
             ]
         ]
     ]);

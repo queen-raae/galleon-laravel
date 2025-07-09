@@ -32,4 +32,4 @@ class Job {
 }
 
 
-// TODO: show $job in mygateways.blade.php and ...
+// TODO: show $job in mygateways.blade.php, but first route it through routes > web.php

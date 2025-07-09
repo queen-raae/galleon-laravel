@@ -5,7 +5,15 @@ use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 // use arr
 use Illuminate\Support\Arr;
+// use app\Models\User; almost exept I used User, for no reason and small a on App instead of capital
+use App\Models\Job;
 // use fn?
+
+Route::get('mygateways', function () {
+    return view('mygateways', [
+        'gateways' => Job::all()
+    ]);
+});
 
 Route::get('/gateway', function () {
     return view('gateway');
@@ -50,29 +58,29 @@ Route::get('/gateway', function () {
 
 // This is an array instead of a database table named 'gateways' with dummy data 
 
-Route::get('/mygateways', function () {
-    return view('mygateways', [
-        'gateways' => [
-            [
-                'owner' => 'Luis',
-                'id' => '1',
-                'name' => 'airtable WorkOS'
+// Route::get('/mygateways', function () {
+//     return view('mygateways', [
+//         'gateways' => [
+//             [
+//                 'owner' => 'Luis',
+//                 'id' => '1',
+//                 'name' => 'airtable WorkOS'
                 
-            ],
-            [
-                'owner' => 'Ola',
-                'id' => '2',
-                'name' => 'airtable WorkOS',
-            ],
-            [
-                'owner' => 'Ola',
-                'id' => '3',
-                'name' => 'google drive WorkOS'
+//             ],
+//             [
+//                 'owner' => 'Ola',
+//                 'id' => '2',
+//                 'name' => 'airtable WorkOS',
+//             ],
+//             [
+//                 'owner' => 'Ola',
+//                 'id' => '3',
+//                 'name' => 'google drive WorkOS'
                 
-            ]
-        ]
-    ]);
-});
+//             ]
+//         ]
+//     ]);
+// });
 
 
 Route::get('/yourgateways', function () {

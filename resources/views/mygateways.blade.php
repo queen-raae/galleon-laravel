@@ -5,7 +5,7 @@
 <ul>
     @foreach ($gateways as $gateway)
         <li>
-            <a href="/gateways/{{ $gateway['id'] }}">
+            <a href="/mygateways/{{ $gateway['id'] }}">
                 <strong>{{ $gateway['name'] }}</strong> 
             </a>
         </li>

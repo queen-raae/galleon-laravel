@@ -9,10 +9,16 @@ use Illuminate\Support\Arr;
 use App\Models\Job;
 // use fn?
 
-Route::get('mygateways', function () {
+Route::get('/mygateways', function () {
     return view('mygateways', [
         'gateways' => Job::all()
     ]);
+});
+
+Route::get('/mygateways/{id}', function ($id) {
+    $gateway = Job::find($id);
+    
+    return view('gateway', ['gateway' => $gateway]);
 });
 
 Route::get('/gateway', function () {
@@ -24,106 +30,6 @@ Route::get('/newgateway', function () {
 });
 
 // I'm building a Minimal Viable Datamodel with as few distractions as possible
-
-// This is an array instead of a database table named 'providers' with dummy data 
-
-Route::get('/gateway', function () {
-    return view('gateway', [
-        'providers' => [
-            [
-                'owner' => 'Luis',
-                'name' => 'whee-airtable',
-                'provider' => 'airtable',
-                'configured-creds' => 'keys and stuff'
-
-            ],
-            [
-                'owner' => 'Ola',
-                'name' => 'ola-airtable',
-                'provider' => 'airtable',
-                'configured-creds' => 'keys and stuff'
-
-            ],
-            [
-                'owner' => 'Ola',
-                'name' => 'ola interview google-sheet',
-                'provider' => 'google drive',
-                'configured-creds' => 'keys and stuff'
-
-            ],
-        ]
-    ]);
-    
-});
-
-// This is an array instead of a database table named 'gateways' with dummy data 
-
-// Route::get('/mygateways', function () {
-//     return view('mygateways', [
-//         'gateways' => [
-//             [
-//                 'owner' => 'Luis',
-//                 'id' => '1',
-//                 'name' => 'airtable WorkOS'
-                
-//             ],
-//             [
-//                 'owner' => 'Ola',
-//                 'id' => '2',
-//                 'name' => 'airtable WorkOS',
-//             ],
-//             [
-//                 'owner' => 'Ola',
-//                 'id' => '3',
-//                 'name' => 'google drive WorkOS'
-                
-//             ]
-//         ]
-//     ]);
-// });
-
-
-Route::get('/yourgateways', function () {
-    return view('yourgateways', [
-        'gateways' => [
-            [ 
-                'name' => 'airtable WorkOS'   
-            ],
-            [
-                'name' => 'google drive WorkOS'   
-            ]
-        ]
-    ]);
-});
-
-// For each of these gateways we'll see what is now in /gateway.blade.php 
-
-Route::get('/gateways/{id}', function ($id) {
-    $gateways = [
-        [
-            'owner' => 'Luis',
-            'id' => '1',
-            'name' => 'airtable WorkOS'
-            
-        ],
-        [
-            'owner' => 'Ola',
-            'id' => '2',
-            'name' => 'airtable WorkOS',
-        ],
-        [
-            'owner' => 'Ola',
-            'id' => '3',
-            'name' => 'google drive WorkOS'
-            
-        ]
-    ];
-
-    $gateway = Arr::first($gateways, fn($gateway) => $gateway['id'] == $id);
-    dd($gateway);
-    // 16:33
-    // return view('gateway', ['gateway' => $gateway]);
-});
 
 
 

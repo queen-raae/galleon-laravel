@@ -7,17 +7,17 @@ use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 use Illuminate\Support\Arr;
 // use app\Models\User; almost exept I used User, for no reason and small a on App instead of capital
 use App\Models\Job;
-// use fn?
+use App\Models\Gateway;
 
 Route::get('/mygateways', function () {
     return view('mygateways', [
-        'gateways' => Job::all()
+        'gateways' => Gateway::all()
     ]);
 });
 
 Route::get('/mygateways/{id}', function ($id) {
-    $gateway = Job::find($id);
-    
+    $gateway = Gateway::find($id);
+
     return view('gateway', ['gateway' => $gateway]);
 });
 

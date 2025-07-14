@@ -11,7 +11,6 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-
 Route::get('/mygateways', function () {
     return view('mygateways', [
         'gateways' => Gateway::all()

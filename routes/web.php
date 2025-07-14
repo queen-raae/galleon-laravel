@@ -3,11 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
-// use arr
 use Illuminate\Support\Arr;
-// use app\Models\User; almost exept I used User, for no reason and small a on App instead of capital
 use App\Models\Job;
 use App\Models\Gateway;
+
+Route::get('/', function () {
+    return Inertia::render('Welcome');
+})->name('home');
+
 
 Route::get('/mygateways', function () {
     return view('mygateways', [
@@ -32,20 +35,6 @@ Route::get('/newgateway', function () {
 // I'm building a Minimal Viable Datamodel with as few distractions as possible
 
 
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/', function () {
-    return Inertia::render('welcome');
-})->name('home');
 
 Route::middleware([
     'auth',

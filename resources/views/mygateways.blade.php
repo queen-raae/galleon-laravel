@@ -1,6 +1,6 @@
 
 <a href="/newgateway">
-    <strong>New Galleon Gateway ⛵</strong> 
+    <strong>Make a New Galleon Gateway ⛵</strong> 
 </a>
 <ul>
     @foreach ($gateways as $gateway)

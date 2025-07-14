@@ -3,36 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Model; 
 
-// TODO swap out "Job" for gateway
-
-class Job {
-    public static function all(): array
-    {
-        return [
-            [ 
-                'id' => 1,
-                'name' => 'WorkOS + Airtable'   
-            ],
-            [
-                'id' => 2,
-                'name' => 'WorkOS + Google drive'   
-            ]
-        ];
-    }
-// TODO swap out "job" for gateway
-// I only changed "job" to gateway here, why didn't I need to change the web.php file or any of the views?
-    public static function find(int $id): array
-    {
-        $gateway = Arr::first(static::all(), fn($gateway) => $gateway['id'] == $id);
-
-        if (! $gateway) {
-            abort(404);
-        }
-
-        return $gateway;
-    }
+class Job extends Model {
+    //
 }
-
-
-// TODO: show $job in mygateways.blade.php, but first route it through routes > web.php

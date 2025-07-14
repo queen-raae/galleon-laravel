@@ -8,7 +8,7 @@ use App\Models\Job;
 use App\Models\Gateway;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return Inertia::render('welcome');
 })->name('home');
 
 

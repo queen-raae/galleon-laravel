@@ -12,7 +12,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/mygateways', function () {
-    return view('mygateways', [
+    return view('mygateways', [ // an array of gateways
         'gateways' => Gateway::all()
     ]);
 });

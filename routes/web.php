@@ -42,6 +42,21 @@ Route::middleware([
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
+
+
+// Create Ahoy, in ep (16)
+Route::get('/gateways/create', function () {
+    
+    // request()->validate([
+    //     'title' => ['required', 'min:3'],
+    //     'salary' => ['required'],
+    // ]);
+
+    return view('gateways.create');
+});
+
+
+
 // Ahoy Show below, in ep (16) 01:56
 Route::get('/mygateways/{id}', function ($id) {
     $gateway = Gateway::find($id);

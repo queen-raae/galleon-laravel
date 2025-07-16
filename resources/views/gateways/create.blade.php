@@ -1,4 +1,4 @@
-<x-layout>
+
     
     <!-- 15:43 @csrf  -->
     <form method="POST" action="/jobs">
@@ -6,42 +6,22 @@
 
     <div>
         <div>
-        <h2>Tell Your Tale</h2>
-        <p>We just need a handful of details from you.</p>
+        <h2>Name a New Galleon Gateway ⛵</h2>
+        <p>We just need a name from you to start.</p>
 
             <div>
                 <div>
-                    <label for="title">Title</label>
+                    <label for="title">Name</label>
                     <div>
                         <div>
-                            <input type="text" name="title" id="title" placeholder="Dev">
+                            <input type="text" name="title" id="title" placeholder="Outseta + Webflow">
                         </div>
-                        @error('title')
-                            <p>{{ $message }}</p>
-                        @enderror
+
                     </div>
             
-                <div>
-                    <label for="salary">Salary</label>
-                    <div>
-                        <div>
-                            <input type="text" name="salary" id="salary" placeholder="1 million $" >
-                        </div>
-                        @error('salary')
-                            <p>{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
+                
             </div>
-            <!-- <div class="mt-10">
-                @if($errors->any())
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li class="text-red-500">{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </div> -->
+            
         </div>
         </div>
 
@@ -54,4 +34,3 @@
     </form>
 
 
-</x-layout>

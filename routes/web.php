@@ -17,11 +17,6 @@ Route::get('/mygateways', function () {
     ]);
 });
 
-Route::get('/mygateways/{id}', function ($id) {
-    $gateway = Gateway::find($id);
-
-    return view('gateway', ['gateway' => $gateway]);
-});
 
 Route::get('/gateway', function () {
     return view('gateway');
@@ -46,3 +41,10 @@ Route::middleware([
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
+
+// Ahoy Show below, in ep (16) 01:56
+Route::get('/mygateways/{id}', function ($id) {
+    $gateway = Gateway::find($id);
+
+    return view('gateway', ['gateway' => $gateway]);
+});

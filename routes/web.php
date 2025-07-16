@@ -55,7 +55,17 @@ Route::get('/gateways/create', function () {
     return view('gateways.create');
 });
 
+Route::get('/gateways/edit', function () {
+    dd('Edit Your named Gateway');
+});
 
+Route::get('/gateways/index', function () {
+    dd('index of gateways');
+});
+
+Route::get('/gateways/show', function () {
+    dd('Click to Edit Your Gateway');
+});
 
 // Ahoy Show below, in ep (16) 01:56
 Route::get('/mygateways/{id}', function ($id) {

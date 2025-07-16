@@ -1,7 +1,6 @@
 
-    
     <!-- 15:43 @csrf  -->
-    <form method="POST" action="/jobs">
+    <form method="POST" action="/gateways">
     @csrf 
 
     <div>
@@ -14,7 +13,7 @@
                     <label for="title">Name</label>
                     <div>
                         <div>
-                            <input type="text" name="title" id="title" placeholder="Outseta + Webflow">
+                            <input type="text" name="name" id="name" placeholder="🥔 Potet på 🛴  ">
                         </div>
 
                     </div>

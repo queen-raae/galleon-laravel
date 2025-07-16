@@ -55,6 +55,20 @@ Route::get('/gateways/create', function () {
     return view('gateways.create');
 });
 
+// Store
+Route::post('/gateways', function () {
+    
+    // request()->validate([
+    //     'name' => ['required', 'min:3'],
+        
+    // ]);
+    Gateway::create([
+        'name' => request('name'),
+        
+    ]);
+    return redirect('/mygateways');
+});
+
 Route::get('/gateways/edit', function () {
     dd('Edit Your named Gateway');
 });

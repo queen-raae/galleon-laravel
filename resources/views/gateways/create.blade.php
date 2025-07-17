@@ -13,7 +13,11 @@
                     <label for="title">Name</label>
                     <div>
                         <div>
-                            <input type="text" name="name" id="name" placeholder="🥔 Potet på 🛴  ">
+                            <input 
+                                type="text" 
+                                name="name" 
+                                id="name" 
+                                placeholder="🥔 Potet på 🛴  ">
                         </div>
 
                     </div>

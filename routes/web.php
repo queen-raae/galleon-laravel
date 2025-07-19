@@ -7,7 +7,6 @@ use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 // use Illuminate\Support\Arr;
 // use App\Models\Job;
 
-// I'm building a Minimal Viable Datamodel with as few distractions as possible
 // Create a Galleon Gateway, in ep (16)
 Route::get('/gateways/create', function () {
     // request()->validate([
@@ -31,8 +30,9 @@ Route::post('/gateways', function () {
 });
 
 Route::get('/gateways/edit', function () {
-    // or is this where a user should add providers?
-    dd('Edit Your named Gateway');
+    // This is where a user should edit her Galleon gateway, for example add providers
+    // The edit.blade.php will go in the gateways folder
+    dd('Edit Your named Galleon Gateway');
 });
 
 // Route::get('/gateways/index', function () {

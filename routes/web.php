@@ -20,7 +20,7 @@ Route::post('/gateways', function () {
     // Server side validation 
     request()->validate([
         'name' => ['required', 'min:3'],
-    ]); // later
+    ]); 
 
     Gateway::create([
         'name' => request('name'),

@@ -5,21 +5,27 @@
 
     <div>
         <div>
-        <h2>Name a New Galleon Gateway ⛵</h2>
+        <h2>Create a New Galleon Gateway ⛵</h2>
         <p>We just need a name from you to start.</p>
 
             <div>
                 <div>
-                    <label for="title">Name</label>
+                    <label for="title">Gateway Name</label>
                     <div>
                         <div>
-                            <input 
+                            <input
+                                placeholder="🥔 Potet på 🛴  " 
                                 type="text" 
                                 name="name" 
                                 id="name" 
-                                placeholder="🥔 Potet på 🛴  ">
+                                required
+                            >
                         </div>
-
+                        @error('name')
+                            <p>{{ $message }}</p>
+                        @enderror
+                    
+                    
                     </div>
             
                 

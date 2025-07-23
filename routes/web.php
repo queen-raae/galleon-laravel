@@ -17,9 +17,10 @@ Route::get('/gateways/create', function () {
 
 // Store a Galleon Gateway in the database 
 Route::post('/gateways', function () {
-    // request()->validate([
-    //     'name' => ['required', 'min:3'],
-    // ]); // later
+    // Server side validation 
+    request()->validate([
+        'name' => ['required', 'min:3'],
+    ]); // later
 
     Gateway::create([
         'name' => request('name'),
@@ -48,10 +49,19 @@ Route::get('/gateways', function () {
     ]);
 });
 
-Route::get('/gateways/show', function () {
-    // it worked even with this dd() inside it! 🥳
-    // dd('Click to Edit Your Gateway');
-});
+// Route::get('/gateways', function () {
+//     $gateways = Gateway::with('employer')->latest()->simplePagination(3);
+//     // If we want pagination
+//     return view('gateways.index', [ // an array of Galleon gateways
+//         'gateways' => $gateways
+//     ]);
+// });
+
+// We use Route::get('/gateways/{id}' instead of this
+// Route::get('/gateways/show', function () {
+//     // it worked even with this dd() inside it! 🥳
+//     // dd('Click to Edit Your Gateway');
+// });
 
 
 Route::get('/', function () {

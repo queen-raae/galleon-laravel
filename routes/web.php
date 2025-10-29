@@ -28,11 +28,7 @@ Route::get('/gateways/edit', function () {
 //     ]);
 // });
 
-Route::get('/gateways', function () {
-    return view('gateways.index', [ // an array of Galleon gateways
-        'gateways' => Gateway::all()
-    ]);
-});
+Route::get('/gateways', [LikeController::class, 'index']);
 
 // Route::get('/gateways', function () {
 //     $gateways = Gateway::with('employer')->latest()->simplePagination(3);

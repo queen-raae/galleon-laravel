@@ -12,7 +12,9 @@ class LikeController extends Controller
      */
     public function index()
     {
-        //
+        return view('gateways.index', [ // an array of Galleon gateways
+            'gateways' => Gateway::all()
+        ]);
     }
 
     /**

@@ -10,7 +10,7 @@
                 type="radio" 
                 id="like_button_toggled" 
                 name="like_button_toggled" 
-                value="Like" 
+                value="yes" 
             />
             <label for="like_button_toggled">Like</label>
         </div>        

@@ -69,11 +69,7 @@ Route::get('/like', function () {
 
 // Ahoy! Show below, in ep (16) 01:56
 // Wildcard routes should come after specific routes like jobs/create to avoid conflicts
-Route::get('/gateways/{id}', function ($id) {
-    $gateway = Gateway::find($id);
-
-    return view('gateways.show', ['gateway' => $gateway]);
-});
+Route::get('/gateways/{id}', [LikeController::class, 'show']);
 
 Route::post('/gateways/{id}/like', function ($id) {
     $galleon = Gateway::find($id);

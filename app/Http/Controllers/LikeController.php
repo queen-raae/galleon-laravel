@@ -50,9 +50,11 @@ class LikeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Gateway $gateway)
+    public function show(Gateway $gateway, $id)
     {
-        //
+        $gateway = Gateway::find($id);
+
+        return view('gateways.show', ['gateway' => $gateway]);
     }
 
     /**

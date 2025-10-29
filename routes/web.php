@@ -10,12 +10,7 @@ use App\Http\Controllers\LikeController;
 // use App\Models\Job;
 
 // Create a Galleon Gateway, in ep (16)
-Route::get('/gateways/create', function () {
-    // request()->validate([
-    //     'name' => ['required', 'min:3'],
-    // ]);  // later
-    return view('gateways.create');
-});
+Route::get('/gateways/create', [LikeController::class, 'create']);
 
 // Store a Galleon Gateway in the database 
 Route::post('/gateways', [LikeController::class, 'store']);

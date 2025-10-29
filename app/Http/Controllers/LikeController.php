@@ -20,7 +20,7 @@ class LikeController extends Controller
      */
     public function create()
     {
-        //
+        return view('gateways.create');
     }
 
     /**

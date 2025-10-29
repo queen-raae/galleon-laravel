@@ -5,6 +5,7 @@ use App\Models\Gateway;
 use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LikeController;
 // use Illuminate\Support\Arr;
 // use App\Models\Job;
 
@@ -17,23 +18,7 @@ Route::get('/gateways/create', function () {
 });
 
 // Store a Galleon Gateway in the database 
-Route::post('/gateways', function (Request $request) {
-    // Server side validation 
-    request()->validate([
-        'name' => '',
-        'like_button_toggled' => '',
-    ]); 
-    $liked = $request->boolean('like_button_toggled');
-    // $archived = $request->boolean('archived');
-    
-
-    Gateway::create([
-        'name' => request('name'),
-        'like_button_toggled' => $liked,
-    ]);
-
-    return redirect('/gateways');
-});
+Route::post('/gateways', [LikeController::class, 'store']);
 
 Route::get('/gateways/edit', function () {
     // This is where a user should edit her Galleon gateway, for example add providers

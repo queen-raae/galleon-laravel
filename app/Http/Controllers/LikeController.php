@@ -54,7 +54,10 @@ class LikeController extends Controller
     {
         $gateway = Gateway::find($id);
 
-        return view('gateways.show', ['gateway' => $gateway]);
+        if ($gateway) {
+            return view('gateways.show', ['gateway' => $gateway]);
+        }
+        return redirect('/gateways');
     }
 
     /**
@@ -62,7 +65,7 @@ class LikeController extends Controller
      */
     public function edit(Gateway $gateway)
     {
-        //
+        // Should a user be able to unlike her like on a tenants framer post?
     }
 
     /**

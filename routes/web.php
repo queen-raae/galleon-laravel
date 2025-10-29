@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Gateway;
 use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
+use Illuminate\Http\Request;
 // use Illuminate\Support\Arr;
 // use App\Models\Job;
 
@@ -16,15 +17,19 @@ Route::get('/gateways/create', function () {
 });
 
 // Store a Galleon Gateway in the database 
-Route::post('/gateways', function () {
+Route::post('/gateways', function (Request $request) {
     // Server side validation 
     request()->validate([
-        'name' => ['required', 'min:3'],
+        'name' => '',
+        'like_button_toggled' => '',
     ]); 
+    $liked = $request->boolean('like_button_toggled');
+    // $archived = $request->boolean('archived');
+    
 
     Gateway::create([
         'name' => request('name'),
-        
+        'like_button_toggled' => $liked,
     ]);
 
     return redirect('/gateways');
@@ -68,7 +73,6 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-
 Route::middleware([
     'auth',
     ValidateSessionWithWorkOS::class,
@@ -81,6 +85,11 @@ Route::middleware([
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
+Route::get('/like', function () {
+    //
+    
+    return view('likeables.show');
+});
 
 // Ahoy! Show below, in ep (16) 01:56
 // Wildcard routes should come after specific routes like jobs/create to avoid conflicts
@@ -88,4 +97,28 @@ Route::get('/gateways/{id}', function ($id) {
     $gateway = Gateway::find($id);
 
     return view('gateways.show', ['gateway' => $gateway]);
+});
+
+Route::post('/gateways/{id}/like', function ($id) {
+    $galleon = Gateway::find($id);
+    // handle-missing-galleon-26
+    // if the id exists return view 'tenants-posts-on-framer-site.show'
+    if ($galleon) {        
+        return view('likeables.show', ['gateway' => $galleon]);
+    }
+    // if the id DOESN'T exists redirect to '/thefts'
+
+    return redirect('/thefts');
+});
+
+Route::get('/gateways/{id}/edit', function ($id) {
+    $galleon = Gateway::find($id);
+    // handle-missing-galleon-26
+    // if the id exists return view 'galleon.show'
+    if ($galleon) {        
+        return view('gateways.edit', ['gateway' => $galleon]);
+    }
+    // if the id DOESN'T exists redirect to '/thefts'
+
+    return redirect('/thefts');
 });

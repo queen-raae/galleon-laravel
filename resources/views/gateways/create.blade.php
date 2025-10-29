@@ -1,16 +1,23 @@
-
     <!-- 15:43 @csrf  -->
     <form method="POST" action="/gateways">
     @csrf 
 
     <div>
         <div>
-        <h2>Create a New Galleon Gateway ⛵</h2>
-        <p>We just need a name from you to start.</p>
+        <h2>You Fake Framer Post ⛵</h2>
+        <div>
+            <input 
+                type="radio" 
+                id="like_button_toggled" 
+                name="like_button_toggled" 
+                value="yes" 
+            />
+            <label for="like_button_toggled">Like</label>
+        </div>        
 
             <div>
                 <div>
-                    <label for="title">Gateway Name</label>
+                    <label for="title">Framer Post Fake URL</label>
                     <div>
                         <div>
                             <input
@@ -18,7 +25,7 @@
                                 type="text" 
                                 name="name" 
                                 id="name" 
-                                required
+                                
                             >
                         </div>
                         @error('name')
@@ -27,8 +34,6 @@
                     
                     
                     </div>
-            
-                
             </div>
             
         </div>

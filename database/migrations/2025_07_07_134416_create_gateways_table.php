@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('gateways', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->boolean('like_button_toggled')->default(false);
             $table->timestamps();
         });
     }

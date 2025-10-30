@@ -35,14 +35,6 @@ require __DIR__.'/auth.php';
 
 Route::get('/gateways/{id}', [LikeController::class, 'show']);
 
-Route::get('/gateways/{id}/non-like', function ($id) {
-    $galleon = Gateway::find($id);
-    
-    if ($galleon) {        
-        return view('gateways.edit', ['gateway' => $galleon]);
-    }
-
-    return redirect('/gateways');
-});
+Route::get('/gateways/{id}/non-like', [LikeController::class, 'edit']);
 
 Route::delete('/gateways/{id}', [LikeController::class, 'destroy']);

@@ -61,26 +61,21 @@ Route::middleware([
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
-Route::get('/like', function () {
-    //
-    
-    return view('likeables.show');
-});
 
 // Ahoy! Show below, in ep (16) 01:56
 // Wildcard routes should come after specific routes like jobs/create to avoid conflicts
 Route::get('/gateways/{id}', [LikeController::class, 'show']);
 
-Route::post('/gateways/{id}/like', function ($id) {
+Route::post('/gateways/{id}/unlike', function ($id) {
     $galleon = Gateway::find($id);
     // handle-missing-galleon-26
     // if the id exists return view 'tenants-posts-on-framer-site.show'
     if ($galleon) {        
-        return view('likeables.show', ['gateway' => $galleon]);
+        return view('gateways.edit', ['gateway' => $galleon]);
     }
-    // if the id DOESN'T exists redirect to '/thefts'
+    // if the id DOESN'T exists redirect to '/gateways'
 
-    return redirect('/thefts');
+    return redirect('/gateways');
 });
 
 Route::get('/gateways/{id}/edit', function ($id) {
@@ -92,5 +87,5 @@ Route::get('/gateways/{id}/edit', function ($id) {
     }
     // if the id DOESN'T exists redirect to '/thefts'
 
-    return redirect('/thefts');
+    return redirect('/gateways');
 });

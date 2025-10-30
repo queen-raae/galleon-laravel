@@ -45,12 +45,4 @@ Route::get('/gateways/{id}/non-like', function ($id) {
     return redirect('/gateways');
 });
 
-Route::delete('/gateways/{id}', function ($id) {
-    // authorize (on hold)
-
-    // delete the like 
-    Gateway::findOrFail($id)->delete();
-    
-    // redirect 
-    return redirect('/gateways');
-});
+Route::delete('/gateways/{id}', [LikeController::class, 'destroy']);

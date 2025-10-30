@@ -81,6 +81,12 @@ class LikeController extends Controller
      */
     public function destroy(Gateway $gateway)
     {
-        //
+        // authorize (on hold)
+
+        // delete the like on the fake Framer post
+        Gateway::findOrFail($id)->delete();
+        
+        // redirect 
+        return redirect('/gateways');
     }
 }

@@ -5,35 +5,15 @@ use App\Models\Gateway;
 use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LikeController;
 // use Illuminate\Support\Arr;
 // use App\Models\Job;
 
 // Create a Galleon Gateway, in ep (16)
-Route::get('/gateways/create', function () {
-    // request()->validate([
-    //     'name' => ['required', 'min:3'],
-    // ]);  // later
-    return view('gateways.create');
-});
+Route::get('/gateways/create', [LikeController::class, 'create']);
 
 // Store a Galleon Gateway in the database 
-Route::post('/gateways', function (Request $request) {
-    // Server side validation 
-    request()->validate([
-        'name' => '',
-        'like_button_toggled' => '',
-    ]); 
-    $liked = $request->boolean('like_button_toggled');
-    // $archived = $request->boolean('archived');
-    
-
-    Gateway::create([
-        'name' => request('name'),
-        'like_button_toggled' => $liked,
-    ]);
-
-    return redirect('/gateways');
-});
+Route::post('/gateways', [LikeController::class, 'store']);
 
 Route::get('/gateways/edit', function () {
     // This is where a user should edit her Galleon gateway, for example add providers
@@ -48,11 +28,7 @@ Route::get('/gateways/edit', function () {
 //     ]);
 // });
 
-Route::get('/gateways', function () {
-    return view('gateways.index', [ // an array of Galleon gateways
-        'gateways' => Gateway::all()
-    ]);
-});
+Route::get('/gateways', [LikeController::class, 'index']);
 
 // Route::get('/gateways', function () {
 //     $gateways = Gateway::with('employer')->latest()->simplePagination(3);
@@ -85,30 +61,21 @@ Route::middleware([
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
-Route::get('/like', function () {
-    //
-    
-    return view('likeables.show');
-});
 
 // Ahoy! Show below, in ep (16) 01:56
 // Wildcard routes should come after specific routes like jobs/create to avoid conflicts
-Route::get('/gateways/{id}', function ($id) {
-    $gateway = Gateway::find($id);
+Route::get('/gateways/{id}', [LikeController::class, 'show']);
 
-    return view('gateways.show', ['gateway' => $gateway]);
-});
-
-Route::post('/gateways/{id}/like', function ($id) {
+Route::post('/gateways/{id}/unlike', function ($id) {
     $galleon = Gateway::find($id);
     // handle-missing-galleon-26
     // if the id exists return view 'tenants-posts-on-framer-site.show'
     if ($galleon) {        
-        return view('likeables.show', ['gateway' => $galleon]);
+        return view('gateways.edit', ['gateway' => $galleon]);
     }
-    // if the id DOESN'T exists redirect to '/thefts'
+    // if the id DOESN'T exists redirect to '/gateways'
 
-    return redirect('/thefts');
+    return redirect('/gateways');
 });
 
 Route::get('/gateways/{id}/edit', function ($id) {
@@ -120,5 +87,5 @@ Route::get('/gateways/{id}/edit', function ($id) {
     }
     // if the id DOESN'T exists redirect to '/thefts'
 
-    return redirect('/thefts');
+    return redirect('/gateways');
 });

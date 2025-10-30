@@ -4,7 +4,7 @@
 
     <div>
         <div>
-        <h2>You Fake Framer Post ⛵</h2>
+        <h2>You Fake Framer Post You ⛵</h2>
         <div>
             <input 
                 type="radio" 
@@ -45,12 +45,5 @@
         <button type="button">Cancel</button>
         <button type="submit">Save</button>
     </div>
-</form>
-
-<!-- Unlike form at http://galleon.test/gateways/{id}/unlike  -->
-<form method="POST" action="/gateways/{{ $gateway->id }}" id="unlike-form" class="hidden">
-    @csrf 
-    @method('PATCH')
-    <p>Unlike</p>
 </form>
 

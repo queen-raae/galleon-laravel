@@ -1,5 +1,5 @@
-    <!-- 15:43 @csrf  -->
-    <form method="POST" action="/gateways">
+<!-- POST  -->
+<form method="POST" action="/gateways">
     @csrf 
 
     <div>
@@ -45,6 +45,12 @@
         <button type="button">Cancel</button>
         <button type="submit">Save</button>
     </div>
-    </form>
+</form>
 
+<!-- Unlike form at http://galleon.test/gateways/{id}/unlike  -->
+<form method="POST" action="/gateways/{{ $gateway->id }}" id="unlike-form" class="hidden">
+    @csrf 
+    @method('PATCH')
+    <p>Unlike</p>
+</form>
 

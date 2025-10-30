@@ -9,41 +9,13 @@ use App\Http\Controllers\LikeController;
 // use Illuminate\Support\Arr;
 // use App\Models\Job;
 
-// Create a Galleon Gateway, in ep (16)
+// Create a Galleon Gateway
 Route::get('/gateways/create', [LikeController::class, 'create']);
 
 // Store a Galleon Gateway in the database 
 Route::post('/gateways', [LikeController::class, 'store']);
 
-Route::get('/gateways/edit', function () {
-    // This is where a user should edit her Galleon gateway, for example add providers
-    // The edit.blade.php will go in the gateways folder
-    dd('Edit Your named Galleon Gateway');
-});
-
-// Route::get('/gateways/index', function () {
-//     // should we use this as index instead of '/gateways'?
-//     return view('gateways.index', [
-//         'gateways' => Gateway::all()
-//     ]);
-// });
-
 Route::get('/gateways', [LikeController::class, 'index']);
-
-// Route::get('/gateways', function () {
-//     $gateways = Gateway::with('employer')->latest()->simplePagination(3);
-//     // If we want pagination
-//     return view('gateways.index', [ // an array of Galleon gateways
-//         'gateways' => $gateways
-//     ]);
-// });
-
-// We use Route::get('/gateways/{id}' instead of this
-// Route::get('/gateways/show', function () {
-//     // it worked even with this dd() inside it! 🥳
-//     // dd('Click to Edit Your Gateway');
-// });
-
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -61,31 +33,24 @@ Route::middleware([
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
-
-// Ahoy! Show below, in ep (16) 01:56
-// Wildcard routes should come after specific routes like jobs/create to avoid conflicts
 Route::get('/gateways/{id}', [LikeController::class, 'show']);
 
-Route::post('/gateways/{id}/unlike', function ($id) {
+Route::get('/gateways/{id}/non-like', function ($id) {
     $galleon = Gateway::find($id);
-    // handle-missing-galleon-26
-    // if the id exists return view 'tenants-posts-on-framer-site.show'
+    
     if ($galleon) {        
         return view('gateways.edit', ['gateway' => $galleon]);
     }
-    // if the id DOESN'T exists redirect to '/gateways'
 
     return redirect('/gateways');
 });
 
-Route::get('/gateways/{id}/edit', function ($id) {
-    $galleon = Gateway::find($id);
-    // handle-missing-galleon-26
-    // if the id exists return view 'galleon.show'
-    if ($galleon) {        
-        return view('gateways.edit', ['gateway' => $galleon]);
-    }
-    // if the id DOESN'T exists redirect to '/thefts'
+Route::delete('/gateways/{id}', function ($id) {
+    // authorize (on hold)
 
+    // delete the like 
+    Gateway::findOrFail($id)->delete();
+    
+    // redirect 
     return redirect('/gateways');
 });

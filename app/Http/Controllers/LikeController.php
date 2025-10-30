@@ -61,11 +61,18 @@ class LikeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for a user to be able to delete her like on a tenant's framer post
      */
     public function edit(Gateway $gateway)
     {
-        // Should a user be able to unlike her like on a tenants framer post?
+        
+        $galleon = Gateway::find($id);
+    
+        if ($galleon) {        
+            return view('gateways.edit', ['gateway' => $galleon]);
+        }
+    
+        return redirect('/gateways');
     }
 
     /**
@@ -81,6 +88,12 @@ class LikeController extends Controller
      */
     public function destroy(Gateway $gateway)
     {
-        //
+        // authorize (on hold)
+
+        // delete the like on the fake Framer post
+        Gateway::findOrFail($id)->delete();
+        
+        // redirect 
+        return redirect('/gateways');
     }
 }

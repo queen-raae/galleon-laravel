@@ -24,9 +24,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         
-        // X Viiii
+        // limited accesss to our route to 
+        // 33 times per minute per authenticated user ID or 
+        // 3 times per minute per IP adress for guests
         RateLimiter::for('pub_like_api', function (Request $request) {
-            Limit::perMinute(33)->by($request->ip());
+            Return $request->user()
+                    ? Limit::perMinute(33)->by($request->user()->id)
+                    : Limit::perMinute(3)->by($request->ip());
         });
 
     }

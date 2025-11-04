@@ -1,19 +1,19 @@
 <!-- POST  -->
-<form method="GET" action="/api/likes">
-    @csrf 
+<form method="POST" action="/api/likes">
+    @csrf
 
     <div>
         <div>
         <h2>You Fake Framer API You ⛵</h2>
         <div>
-            <input 
-                type="radio" 
-                id="like_button_toggled" 
-                name="like_button_toggled" 
-                value="yes" 
+            <input
+                type="radio"
+                id="like_button_toggled"
+                name="like_button_toggled"
+                value="yes"
             />
             <label for="like_button_toggled">Like</label>
-        </div>        
+        </div>
 
             <div>
                 <div>
@@ -21,21 +21,21 @@
                     <div>
                         <div>
                             <input
-                                placeholder="🥔 Potet på 🛴  " 
-                                type="text" 
-                                name="name" 
-                                id="name" 
-                                
+                                placeholder="🥔 Potet på 🛴  "
+                                type="text"
+                                name="name"
+                                id="name"
+
                             >
                         </div>
                         @error('name')
                             <p>{{ $message }}</p>
                         @enderror
-                    
-                    
+
+
                     </div>
             </div>
-            
+
         </div>
         </div>
 

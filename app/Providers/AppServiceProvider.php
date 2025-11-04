@@ -28,10 +28,11 @@ class AppServiceProvider extends ServiceProvider
         // 33 times per minute per authenticated user ID or 
         // 3 times per minute per IP adress for guests
         RateLimiter::for('pub_like_api', function (Request $request) {
-            Return $request->user()
+            return $request->user()
                     ? Limit::perMinute(33)->by($request->user()->id)
                     : Limit::perMinute(3)->by($request->ip());
         });
+
 
     }
 }

@@ -5,16 +5,23 @@ use App\Models\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['throttle:pub_like_api'])->group(function () 
-{
+Route::get('/hello', function () {
+  return "Hello World!";
+});
 
-    //     How do I see this route? The file is routes/ api.php
-    Route::get('/likes', function () { // this
-        return response()->json(Gateway::all(), 201); // this
-    }); 
+Route::get('/likes', function () {
+  return response()->json(Gateway::all(), 201);
+});
+
+Route::post('/likes', function (Request $request) {
+    // Lag ny gateway
+    // store
+    // returner en json respons som sier at dette gikk bra
+  return response()->json(['message' => 'Like created successfully'], 201);
 });
 
 
-// How does "it" get from AppServiceProvider and here?
-// - pub_like_api
-// - middleware
+
+
+
+

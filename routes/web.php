@@ -10,12 +10,7 @@ use App\Models\User;
 // use Illuminate\Support\Arr;
 // use App\Models\Job;
 
-Route::get('/api/likes', function () {
-    // authenticate (on hold)
-    // rate limiting
-    // return JSON
-    return response()->json(Gateway::all(), 201);
-});
+
 
 
 // Create a Galleon Gateway

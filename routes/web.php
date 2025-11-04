@@ -10,7 +10,7 @@ use App\Models\User;
 // use Illuminate\Support\Arr;
 // use App\Models\Job;
 
-Route::get('api/likes', function () {
+Route::get('/api/likes', function () {
     // authenticate (on hold)
     // rate limiting
     // return JSON

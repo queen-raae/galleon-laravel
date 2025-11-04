@@ -21,7 +21,7 @@ Route::get('/api/likes', function () {
 // Create a Galleon Gateway
 Route::get('/gateways/create', [LikeController::class, 'create']);
 
-// Store a Galleon Gateway in the database 
+// Store a Galleon Gateway in the database
 Route::post('/gateways', [LikeController::class, 'store']);
 
 Route::get('/gateways', [LikeController::class, 'index']);
@@ -42,8 +42,14 @@ Route::middleware([
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
+Route::get('/gateways/api-test', function () {
+    return view('gateways.api');
+});
+
 Route::get('/gateways/{id}', [LikeController::class, 'show']);
 
 Route::get('/gateways/{id}/non-like', [LikeController::class, 'edit']);
 
 Route::delete('/gateways/{id}', [LikeController::class, 'destroy']);
+
+

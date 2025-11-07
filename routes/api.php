@@ -24,15 +24,18 @@ Route::post('/likes', function (Request $request) {
         'like_button_toggled' => $liked
     ]);
     
-    
+
     return BookmarkResource::collection(Gateway::all());
     // returner en json respons som sier at dette gikk bra ↙️ 🥳
     //   return response()->json(['message' => 'Like created successfully'], 201);
 });
 
-Route::post('/reverse-me', function (Request $request) {
-    $reversed = strrev($request->input('reverse_this'));
-    return $reversed;
+Route::delete('/likes', function (Request $request, $name) {
+    // Add another form under form in api.blade.php
+    // find name, Where does $name "come" from?
+    Gateway::findOrFail($name)->delete();
+    // dd($name)
+    // or BookmarkResource::collection(Gateway::find($name));
   });
 
 

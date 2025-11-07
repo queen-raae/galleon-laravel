@@ -44,6 +44,15 @@
     <div>
         <button type="button">Cancel</button>
         <button type="submit">Save</button>
+        
     </div>
 </form>
 
+
+<!-- DELETE  -->
+<form method="POST" action="/gateways">
+    
+    @method('DELETE')
+    @csrf 
+
+</form>

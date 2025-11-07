@@ -31,11 +31,10 @@ Route::post('/likes', function (Request $request) {
 });
 
 Route::delete('/likes', function (Request $request, $name) {
-    // Add another form under form in api.blade.php
-    // find name, Where does $name "come" from?
+    
     Gateway::findOrFail($name)->delete();
-    // dd($name)
-    // or BookmarkResource::collection(Gateway::find($name));
+
+    return redirect('/likes');
   });
 
 

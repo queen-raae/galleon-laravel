@@ -44,13 +44,13 @@
     <div>
         <button type="button">Cancel</button>
         <button type="submit">Save</button>
-        
+        <button type="button" form="delete-form">DELETE</button>
     </div>
 </form>
 
 
 <!-- DELETE  -->
-<form method="POST" action="/gateways">
+<form method="POST" action="/gateways" id="delete-form" class="hidden">
     
     @method('DELETE')
     @csrf 

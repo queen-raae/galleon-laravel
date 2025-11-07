@@ -50,7 +50,7 @@
 
 
 <!-- DELETE  -->
-<form method="POST" action="/gateways" id="delete-form" class="hidden">
+<form method="POST" action="/api/likes" id="delete-form" class="hidden">
     
     @method('DELETE')
     @csrf 

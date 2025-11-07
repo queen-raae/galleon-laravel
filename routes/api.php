@@ -2,6 +2,7 @@
 
 use App\Models\Gateway;
 // use App\Models\User;
+use App\Http\Resources\BookmarkResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,25 @@ Route::get('/likes', function () {
 });
 
 Route::post('/likes', function (Request $request) {
-    // Lag ny gateway
-    // store
-    // returner en json respons som sier at dette gikk bra
-  return response()->json(['message' => 'Like created successfully'], 201);
+    // make new gateway
+    $liked = $request->boolean('like_button_toggled');
+
+    // store the new gateway
+    Gateway::create([
+        'name' => request('name'),
+        'like_button_toggled' => $liked
+    ]);
+    
+    
+    return BookmarkResource::collection(Gateway::all());
+    // returner en json respons som sier at dette gikk bra ↙️ 🥳
+    //   return response()->json(['message' => 'Like created successfully'], 201);
 });
 
+Route::post('/reverse-me', function (Request $request) {
+    $reversed = strrev($request->input('reverse_this'));
+    return $reversed;
+  });
 
 
 

@@ -17,7 +17,7 @@ class BookmarkResource extends JsonResource
         return [
             'name' => $this->name,
             'like_button_toggled' => $this->like_button_toggled,
-        ]; 
-     
+        ];
+         
     }
 }

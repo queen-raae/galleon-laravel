@@ -13,8 +13,8 @@ Route::post('/bookmarks', function () {
     GalleonAction::firstOrCreate([
         'art_id' => request('art_id'),
     ]);
-    // returner en json respons som sier at dette gikk bra ↙️ 🥳
-    return response()->json(['message' => 'Like created successfully'], 201);
+    // returner en json respons with all bookmarks ↙️ 🥳
+    return response()->json(GalleonAction::all(), 201);
 });
 
 Route::get('/hello', function () {

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('galleon_actions', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
+            $table->string('art_id');
+            $table->string('action_type')->default('bookmark');
             $table->timestamps();
         });
     }

@@ -9,4 +9,6 @@ class GalleonAction extends Model
 {
     /** @use HasFactory<\Database\Factories\GalleonActionFactory> */
     use HasFactory;
+    protected $fillable = ['user_id', 'art_id', 'action_type'];
+    
 }

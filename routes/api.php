@@ -1,10 +1,21 @@
 <?php
 
 use App\Models\Gateway;
-// use App\Models\User;
+use App\Models\GalleonAction;
 use App\Http\Resources\BookmarkResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+
+Route::post('/bookmarks', function () {
+
+    // store the new GalleonAction
+    GalleonAction::firstOrCreate([
+        'art_id' => request('art_id'),
+    ]);
+    // returner en json respons som sier at dette gikk bra ↙️ 🥳
+    return response()->json(['message' => 'Like created successfully'], 201);
+});
 
 Route::get('/hello', function () {
   return "Hello World!";
@@ -26,8 +37,7 @@ Route::post('/likes', function (Request $request) {
     
 
     return BookmarkResource::collection(Gateway::all());
-    // returner en json respons som sier at dette gikk bra ↙️ 🥳
-    //   return response()->json(['message' => 'Like created successfully'], 201);
+    
 });
 
 Route::delete('/likes', function (Request $request, $name) {
@@ -39,5 +49,6 @@ Route::delete('/likes', function (Request $request, $name) {
 
 
 
-
+//   'art_id' not 'name' 
+//   'bookmark_button_toggled' not 'like_button_toggled' 
 

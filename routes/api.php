@@ -6,6 +6,9 @@ use App\Http\Resources\BookmarkResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/bookmarks', function () {
+    return response()->json(GalleonAction::all(), 201);
+});
 
 Route::post('/bookmarks', function () {
 
@@ -16,6 +19,24 @@ Route::post('/bookmarks', function () {
     // returner en json respons with all bookmarks ↙️ 🥳
     return response()->json(GalleonAction::all(), 201);
 });
+
+Route::delete('/bookmarks', function ($art_id) {
+    
+    GalleonAction::findOrFail($art_id)->delete;
+
+    return redirect('/bookmarks');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/hello', function () {
   return "Hello World!";

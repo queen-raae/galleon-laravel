@@ -5,17 +5,48 @@ use App\Models\GalleonAction;
 use App\Http\Resources\BookmarkResource; // what, structured response
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 
 
-Route::post('/reactions', function () {
+route::get('/profile', function ()
+{
     
-    GalleonAction::firstOrCreate([
-        'art_id' => request('art_id')
-        
-    ]);
-    return response()->json(GalleonAction::all(), 201);
-    // return "yo";
+    return Http::withToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImVNQnNkMGRqYTY2aHFZbEpocFFOMUItZ1FqcyIsImtpZCI6ImVNQnNkMGRqYTY2aHFZbEpocFFOMUItZ1FqcyJ9.eyJuYmYiOjE3NjYwNDQ2MTYsImV4cCI6MTc2NjY0OTQxNiwiaXNzIjoiaHR0cHM6Ly9zbmlwcGV0cy5vdXRzZXRhLmNvbSIsImNsaWVudF9pZCI6InNuaXBwZXRzLm91dHNldGEuY29tLnJlc291cmNlLW93bmVyIiwic2NvcGUiOlsib3BlbmlkIiwib3V0c2V0YSIsInByb2ZpbGUiXSwic3ViIjoiWm1OWG5PbjkiLCJhdXRoX3RpbWUiOjE3NjYwNDQ2MTYsImlkcCI6Imlkc3J2IiwiZW1haWwiOiJ0ZXN0QGxpbGx5bGFicy5ubyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmYW1pbHlfbmFtZSI6IlJhYWUiLCJnaXZlbl9uYW1lIjoiUXVlZW4iLCJuYW1lIjoiUXVlZW4gUmFhZSIsIm5hbWVpZCI6IlptTlhuT245Iiwib3V0c2V0YTphY2NvdW50VWlkIjoiajliYlJhbjkiLCJvdXRzZXRhOmlzUHJpbWFyeSI6IjEiLCJvdXRzZXRhOnN1YnNjcmlwdGlvblVpZCI6Ink5cUQ3a0tRIiwib3V0c2V0YTpwbGFuVWlkIjoieG1lYnFCUVYiLCJvdXRzZXRhOmFkZE9uVWlkcyI6W10sImFtciI6WyJwYXNzd29yZCJdLCJvdXRzZXRhOmlzcyI6IiIsImF1ZCI6InNuaXBwZXRzLm91dHNldGEuY29tIiwiaWF0IjoxNzY2MDQ0NjE2fQ.QmDXO0RZ1HGUu_O2Of2psj-KRoo45V3nKUmiR1F3UQbJJqPAqD9IZpOa8SXQf1L_vafJvbvhAoCNNoPYmd7SJkLJRYUY5sJVtWuyTyiAlTH5MfNmYnV94RYn2fF_uumhWpbdBzpiRHBe4cDq1AhHeUT7trDX9XGPohGuumDHiZwbGUJMwoWK2EySMniUvm1dcuS5Z75Gi1SBkhvWU1zpn8sMqKjQ-ZizNsozgKa3TGzereHilRIHRMTRCsyO93FUfG1FBDFXbM6Qwfa7OoJEYF_dYQWDDj8YBwAMxP51s-5UPMoBzKeo7RUxfbKEj1SnITyRg_hHL9Hg38Ppb3Gt-g')->get('https://snippets.outseta.com/api/v1/profile?fields=*')->json();
 });
+
+// use params in HTTPie, but why?
+// route::get('/ook', function ()
+// {
+//     // $baseUrl = 'https://api.callingallpapers.com/v1/';
+//     // Http::withHeaders
+//     // return Http::get($this->$baseUrl . 'cfp')->json();
+//     // return "yo";
+//     return Http::withToken('🔑')->get('🌐');
+//     return Http::withToken('')->get('')->json();
+
+//     return Http::get('https://api.callingallpapers.com/v1/cfp', )->json();
+
+    
+// });
+
+
+// // use params in HTTPie, but why?
+// route::get('/ook', function ()
+// {
+//     // $baseUrl = 'https://api.callingallpapers.com/v1/';
+
+//     // return Http::get($this->$baseUrl . 'cfp')->json();
+//     // return "yo";
+
+//     return Http::get('https://api.callingallpapers.com/v1/cfp')->json();
+
+    
+// });
+
+// route::get('/paper', function () 
+// {
+//     return Http::get('https://api.callingallpapers.com/v1/cfp')->json();
+// });
 
 
 // Route::get('/bookmarks', function () {
@@ -23,115 +54,64 @@ Route::post('/reactions', function () {
 // });
 
 
-// Route::get('/hello', function () {
-//     return view('gateways.boof');
-  
-// });
-
-
-// Route::post('/hello', function () {
-    
+// Route::post('/reactions', function () {
+//     // how if 
+//     //$act->save;
 //     GalleonAction::firstOrCreate([
 //         'art_id' => request('art_id')
         
 //     ]);
-//     // return response()->json(GalleonAction::all(), 201);
-//     return "yo";
-// });
-
-// Route::post('/rec', function () {
-//     GalleonAction::firstOrCreate([
-//         'art_id' => request('art_id')
-//     ]);
 //     return response()->json(GalleonAction::all(), 201);
+//     // return "yo";
 // });
 
-
-
-// Route::get('/boof', function () {
-//     return view('gateways.boof');
-// });
-
-// Route::post('/boof/{art_id}', function (Request $request, string $art_id) {
-//     GalleonAction::firstOrCreate([
-//         'art_id' => $art_id,
-        
-//     ]);
-//     // return response()->json(GalleonAction::all(), 201);
-//     return "yo";
-// });
-
-// Route::post('/bookmarks/{art_id}', function (Request $request, string $art_id) {
-//     // request    
-
-//     // $request->bearerToken();
-//  
-// Validate token and get user info
-//     // $shipmate = $request->bearerToken();
-
-// If user already reacted to this path, toggle it off (unlike)
-
-//
-// Save reaction to database (user_id, path, reaction, timestamp)
-// store the new GalleonAction
-//     GalleonAction::firstOrCreate([
-//         'art_id' => request('art_id'),
-//         // 'shipmate_id' => $shipmate
-//     ]);
+// route::patch('/reactions/{id}', function ($id)
+// {
+//     $act = GalleonAction::findOrFail($id);
     
-//     // returner en json respons with all bookmarks ↙️ 🥳
-//     return response()->json(GalleonAction::all(), 201);
-    
+//     $act->action_type = request('action_type');
+//     $act->save();
+// the Wes Bos method og you do you
+// the Wes Raae method of Don't Change A Thing
+//     return response()->json(GalleonAction::find($id), 201);
 // });
 
-// Route::delete('/bookmarks', function ( $art_id) {
-    
-//     GalleonAction::findOrFail($art_id)->delete;
+route::get('/bleh', function ()
+{
+    // Grab the auth header
+    $authHeader = request->headers('authorization');
+    // Grab the token from the auth header by splitting
+    // on space and taking the second value.
+    $token = authHeader?->split(" ")[1]?->trim();
 
-//     return redirect('/bookmarks');
-// });
+    // $fetchResponse = await fetch(
+    //     // Adding fields=* gives you custom properties as well
+    //     "https://<your_domain>.outseta.com/api/v1/profile?fields=*",
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
+      
+    //   if (!fetchResponse.ok) throw new Error("Profile response not ok");
+      
+    //   const profile = await fetchResponse.json();
+      
+      console.log("VERIFIED");
+      
+      // The token is verified and you may use the information in its payload
+      // and/or the information provided by the profile endpoint
+      // to identify the person behind the request.
+    //   const payload = decodeJwt(token);
+});
 
-// // viii
-// // ii
+route::patch('/reactions/{id}', function ($id) 
+{
+    $act = GalleonAction::findOrFail($id);
 
+    $act->action_type = request('action_type');
+    $act->save();
 
-
-
-
-
-
-
-
-
-
-// Route::get('/likes', function () {
-//   return response()->json(Gateway::all(), 201);
-// });
-
-// Route::post('/likes', function (Request $request, $id) {
-//     // make new gateway
-//     $liked = $request->boolean('like_button_toggled');
-
-//     // store the new gateway
-//     Gateway::create([
-//         'name' => request('name'),
-//         'like_button_toggled' => $liked
-//     ]);
-    
-
-//     return BookmarkResource::collection(Gateway::all());
-    
-// });
-
-// Route::delete('/likes', function (Request $request, $name) {
-    
-//     Gateway::findOrFail($name)->delete();
-
-//     return redirect('/likes');
-//   });
-
-
-
-// //   'art_id' not 'name' 
-// //   'bookmark_button_toggled' not 'like_button_toggled' 
-
+    return response()->json(GalleonAction::find($id), 201);
+});

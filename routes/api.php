@@ -16,17 +16,38 @@ Route::post('/name', function (Request $request) {
 Route::patch('/reactions/{id}/edit', function ($id)
 {
     // 1. Grab the token
+    // Get the Authorization header
+    $authHeader = request()->header('Authorization');
+    
+    // Split the Authorization header into parts
+    $parts = $authHeader ? explode(" ", $authHeader) : [];
+    
+    // Get the token from the second part of the Authorization header
+    $token = isset($parts[1]) ? trim($parts[1]) : null;
+    
+    // If the token is not found, return an error
+    if (!$token) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
     // 2. Verify the token
     // Get the profile from the Outseta API
+    $profileResponse = Http::withToken($token)->get('https://snippets.outseta.com/api/v1/profile?fields=*');
+
     // If the profile is not found or unathorized, return an error
+    if ($profileResponse->failed()) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
     // Get the profile json response
+    $profile = $profileResponse->json();
     // Get the shipmate_id from the profile
+    $shipmate_id = $profile['Uid'];
     // If the shipmate_id is not found, return an error
+    if (!$shipmate_id) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+    $shipmate_id = $profile['Uid'];
     
-    // 3. Get the shipmate_id data from the request and use it instead of 'bro'
-    $shipmate_id = 'bro';
-    
-    // 3. Save the data to the database
     $edit = GalleonAction::findOrFail($id);
     $edit->action_type = request('action_type');
     $edit->shipmate_id = $shipmate_id;

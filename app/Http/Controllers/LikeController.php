@@ -63,7 +63,7 @@ class LikeController extends Controller
     /**
      * Show the form for a user to be able to delete her like on a tenant's framer post
      */
-    public function edit(Gateway $gateway)
+    public function edit(Gateway $gateway, $id)
     {
         
         $galleon = Gateway::find($id);
@@ -86,7 +86,7 @@ class LikeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Gateway $gateway)
+    public function destroy(Gateway $gateway, $id)
     {
         // authorize (on hold)
 

@@ -40,5 +40,10 @@ return [
         'secret' => env('WORKOS_API_KEY'),
         'redirect_url' => env('WORKOS_REDIRECT_URL'),
     ],
+    'outseta' => [
+        'client_id' => env('OUTSETA_CLIENT_ID'),
+        'secret' => env('OUTSETA_API_KEY'),
+        'redirect_url' => env('OUTSETA_REDIRECT_URL'),
+    ]
 
 ];

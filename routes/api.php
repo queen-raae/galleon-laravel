@@ -13,6 +13,28 @@ Route::post('/name', function (Request $request) {
     return response()->json(['name' => $name]);
 });
 
+Route::patch('/reactions/{id}/edit', function ($id)
+{
+    // 1. Grab the token
+    // 2. Verify the token
+    // Get the profile from the Outseta API
+    // If the profile is not found or unathorized, return an error
+    // Get the profile json response
+    // Get the shipmate_id from the profile
+    // If the shipmate_id is not found, return an error
+    
+    // 3. Get the shipmate_id data from the request and use it instead of 'bro'
+    $shipmate_id = 'bro';
+    
+    // 3. Save the data to the database
+    $edit = GalleonAction::findOrFail($id);
+    $edit->action_type = request('action_type');
+    $edit->shipmate_id = $shipmate_id;
+    $edit->save();
+    return response()->json($edit, 201);
+});
+
+
 Route::post('/reactions', function (Request $request) {
     // 1. Grab the token
     // Get the Authorization header
